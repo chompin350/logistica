@@ -1,0 +1,6 @@
+{
+	"appId": "app.logistica",
+	"appName": "logistica",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

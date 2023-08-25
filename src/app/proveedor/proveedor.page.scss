@@ -1,0 +1,22 @@
+#imagen{
+  width: 100px;
+  height: auto;
+  background: #CCC;
+  overflow: hidden;
+}
+
+#imagen img{
+  width: 100%;
+  height: auto;
+}
+@supports(object-fit: cover){
+    .box img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+
+.fondo {
+  color: var(--ion-color-mywhite);
+}

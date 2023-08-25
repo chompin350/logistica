@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://msoluciones.codemaker.cl/backoffice/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

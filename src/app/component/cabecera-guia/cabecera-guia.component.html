@@ -1,0 +1,29 @@
+<div class="borde">
+  <fieldset>
+    <legend class="margen1">Ruta de retiro</legend>
+    <form [formGroup]="formulario" (submit)="validaguia()" class="margen1">
+      <ion-grid>
+        <ion-row class="d-flex flex-wrap align-items-center">
+          <ion-col sizeXs="12" sizeMd="2">Nro Ruta</ion-col>
+          <ion-col class="d-flex" sizeXs="12" sizeMd="4">
+            <ion-input type="number" formControlName="nroguia" #nroguia id="nroguia" name="nroguia" class="form-control centrar" readonly></ion-input>
+          </ion-col>
+          <ion-col sizeXs="12" sizeMd="2">Creación</ion-col>
+          <ion-col sizeXs="12" sizeMd="4"><input type="text" class="form-control" formControlName="fcreacion" id="fcreacion" readonly></ion-col>
+          <ion-col sizeXs="12" sizeMd="2">Apertura</ion-col>
+          <ion-col sizeXs="12" sizeMd="4"><input type="text" class="form-control" formControlName="fapertura" id="fapertura" readonly></ion-col>
+          <ion-col sizeXs="12" sizeMd="2">Cierre</ion-col>
+          <ion-col sizeXs="12" sizeMd="4"><input type="text" class="form-control" formControlName="fcierre" id="fcierre" readonly></ion-col>
+        </ion-row>
+        <ion-row class="d-flex flex-wrap align-items-center">
+          <ion-col sizeXs="12" sizeMd="2">Encargado</ion-col>
+          <ion-col sizeXs="12" sizeMd="10"><input type="text" class="form-control" formControlName="encargado" id="encargado" readonly ></ion-col>
+          <ion-col sizeXs="12" sizeMd="2">Vehiculo</ion-col>
+          <ion-col sizeXs="12" sizeMd="4"><input type="text" class="form-control" formControlName="vehiculo" id="vehiculo" readonly></ion-col>
+        </ion-row>
+      </ion-grid>
+      <input type="hidden" formControlName="idusuario" id="idusuario" class="form-control" >
+    </form>
+</fieldset>
+</div>
+

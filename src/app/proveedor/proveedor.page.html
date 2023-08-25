@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Proveedor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-subtitle color="primary"> {{ razonsocial }}</ion-card-subtitle>
+      <ion-card-title> {{ fantasia }} </ion-card-title>
+      <div id="imagen"><img [src]="logo"></div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Direccion:</ion-label>
+          <ion-text>{{ direccion }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Contacto :</ion-label>
+          <ion-text>{{ contacto }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Telefono :</ion-label>
+          <ion-text>{{ telefono }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+  
+</ion-content>
+
+

@@ -1,0 +1,85 @@
+.fondo {
+  color: var(--ion-color-mywhite);
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+// tr:nth-of-type(odd) { 
+// 	background: #eee; 
+// }
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+.borde{
+  border: 1px solid rgb(163, 158, 158);
+  border-radius: 5px;
+  margin: 5px;
+}
+.centrar{
+  text-align: center;
+}
+
+@media
+only screen and (max-width: 728px),
+(min-device-width: 768px) and (max-device-width: 728px)  {
+
+  /* Force table to not be like tables anymore */
+  table .secundaria , thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr { border: 1px solid #ccc; margin: 0 0 1rem 0; }
+
+  tr:nth-child(odd) {
+    background: #ccc;
+  }
+  
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  .colorletra{
+    color:white;
+    background-color: #333;
+  }
+  /*
+  Label the data
+  */
+  td:nth-of-type(1):before { content: "OCC N°";}
+  td:nth-of-type(2):before { content: "Guia Despacho"; }
+  td:nth-of-type(3):before { content: "Bulto:"; }
+  td:nth-of-type(4):before { content: "Descripcion"; }
+  td:nth-of-type(5):before { content: "Fecha Creacion"; }
+  td:nth-of-type(6):before { content: "Recepcion Bodega"; }
+  
+}

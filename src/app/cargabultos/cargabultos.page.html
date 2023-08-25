@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start" defaultHref="/bultos/{{iditem}}/{{idguiaretiro}}"></ion-back-button>
+    <ion-title>Cargar Bultos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="borde">
+    
+    <ion-button color="success" expand="block" (click)="scanBar()" size="large">
+      <ion-icon name="barcode-outline"  slot="end"></ion-icon>
+      Scanear Codigo
+    </ion-button>
+
+    <div>
+      <ion-col sizeXs="12" sizeMd="10" sizeLg="10" style="display:flex;">
+        <ion-input type="text" id="scancodigo" name="scancodigo" size-xs="12" size-md="10" size-lg="10" #scancodigo class="form-control centrar"></ion-input>
+        <ion-button color="primary" (click)="limpiarcodigo();">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col sizeXs="12" sizeMd="2" sizeLg="2">
+        <ion-button  (click)="btnvalidacarga()" expand="block" size="large">
+          <ion-icon name="hand-right-outline" slot="end"></ion-icon>
+          Subida Manual
+        </ion-button>  
+      </ion-col>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Codigo</th>
+          <th>Estado</th>
+          <th>Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listado">
+          <td>{{item.id}}</td>
+          <td>{{item.codigo}}</td>
+          <td>{{item.estado}}</td>
+          <td>
+            <ion-button *ngIf="item.cargado===1" disabled>
+              <img [src]="myCustomIconOk" alt="" class="iconocamion">
+              Subir
+            </ion-button>
+            <ion-button *ngIf="item.cargado===0" (click)="subirbulto(item)">
+              <img [src]="myCustomIcon" alt="" class="iconocamion">
+
+              Subir
+            </ion-button>
+          </td>
+        </tr>
+      </tbody> 
+
+    </table>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button expand="block" size="large" [attr.disabled]="limpiar" (click)="limpiarlistado()">  
+    <ion-label>Limpiar listado</ion-label>  
+    <ion-icon name="trash-outline"></ion-icon> 
+  </ion-button> 
+</ion-footer>

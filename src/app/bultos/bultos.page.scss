@@ -1,0 +1,159 @@
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+// tr:nth-of-type(odd) { 
+// 	background: #eee; 
+// }
+th.uno { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+th.dos { 
+  background: rgb(119, 117, 117); 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+.flotante{
+  width: auto;
+  margin-left: 5px;
+  margin-top: -10px;
+  font-size: .8rem;
+  background-color: #fff;
+}
+
+.borde{
+  border: 1px solid rgb(151, 147, 147);
+  border-radius: 5px;
+}
+
+:root {  
+  --ion-safe-area-top: 20px;  
+  --ion-safe-area-bottom: 22px;  
+}  
+ion-slide {  
+  height: calc(100vh - 140px);  
+}  
+
+
+@media
+only screen and (max-width: 728px),
+(min-device-width: 768px) and (max-device-width: 728px)  {
+
+  /* Force table to not be like tables anymore */
+  table .secundaria , thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr { border: 1px solid #ccc; margin: 0 0 1rem 0; }
+
+  tr:nth-child(odd) {
+    background: #ccc;
+  }
+  
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  .colorletra{
+    color:white;
+    background-color: #333;
+  }
+  /*
+  Label the data
+  */
+  .secundaria td:nth-of-type(1):before { content: "Linea";}
+  .secundaria td:nth-of-type(2):before { content: "Codigo"; }
+  .secundaria td:nth-of-type(3):before { content: "Etiqueta"; }
+  .secundaria td:nth-of-type(4):before { content: "Estado"; }
+  .secundaria td:nth-of-type(5):before { content: "Opc"; }
+
+  
+  .primaria td:nth-of-type(1):before { content: "Lin OC";}
+  .primaria td:nth-of-type(2):before { content: "Producto"; }
+  .primaria td:nth-of-type(3):before { content: "Detalle"; }
+  .primaria td:nth-of-type(4):before { content: "Calidad"; }
+  .primaria td:nth-of-type(5):before { content: "Cantidad"; }
+  .primaria td:nth-of-type(6):before { content: "Estado"; }
+  .primaria td:nth-of-type(7):before { content: "Cant.Bultos"; }
+
+}
+
+ion-segment-button:hover{
+  border: 1px solid #3880ff;
+}
+
+.subtitulo{
+  font-size: 8px;
+  color: green;
+  margin-top: -15px;
+}
+
+.modal-button-cancel{
+  width: 100px;
+  padding: 5px;
+  background-color: red;
+  --background-color: red;
+  --color:white;
+}
+
+.alert-ios .alert-wrapper{
+  button.alertButton{
+  background-color: red !important;
+  }
+}
+
+img{
+  max-width:50%;
+  width: 60px;
+  height: 60px;
+  overflow: auto;
+}
+
+.center{
+  text-align: center;
+}
+
+.fondo {
+  color: var(--ion-color-mywhite);
+}
+
+.toolbartools{
+  background-color: cornsilk;
+}
+
+.iconocamion{
+  width: 24px;
+  height: 24px;
+}
+
+.lblcarga{
+  margin-top: 0px;
+}

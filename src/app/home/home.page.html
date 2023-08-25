@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start" defaultHref="/inicio"></ion-back-button>
+    <ion-title>Rutas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="margin-top: 5px;" class="ion-padding">
+  <app-cabecera-guia [pasaguia]="idruta"></app-cabecera-guia>
+  <app-detalle-guia></app-detalle-guia>
+
+<ion-content>
+
+<ion-footer class="fixed-bottom">
+  <ion-button (click)="cerrarruta();" expand="block" size="large" color="primary" *ngIf="inicio">Valida Subida Bulto</ion-button>
+  <ion-button (click)="entregabodega();" expand="block" size="large" color="primary" *ngIf="otro">Entrega a Bodeda</ion-button>
+</ion-footer>
+

@@ -1,0 +1,110 @@
+.borde{
+  padding: 10px;
+  margin: 0 10px;
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+// tr:nth-of-type(odd) { 
+// 	background: #eee; 
+// }
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+.center{
+  text-align: center;
+}
+
+.borde-linea{
+  border: 1px solid black;
+  width: 120mm;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.cabecera{
+  font-size: 10px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.nroguia{
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.divfecha{
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.letra{
+  font-size: 16px;
+  height: 20px;
+  width: 20px;
+}
+
+@media
+only screen and (max-width: 728px),
+(min-device-width: 768px) and (max-device-width: 728px)  {
+
+  /* Force table to not be like tables anymore */
+  table .secundaria , thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr { border: 1px solid #ccc; margin: 0 0 1rem 0; }
+
+  tr:nth-child(odd) {
+    background: #ccc;
+  }
+  
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  .colorletra{
+    color:white;
+    background-color: #333;
+  }
+  /*
+  Label the data
+  */
+  td:nth-of-type(1):before { content: "Seleccion"}
+  td:nth-of-type(2):before { content: "Codigo"; }
+  td:nth-of-type(3):before { content: "Fecha"; }
+  td:nth-of-type(4):before { content: "Q Impresiones"; }
+}
+
+.fondo {
+  color: var(--ion-color-mywhite);
+}

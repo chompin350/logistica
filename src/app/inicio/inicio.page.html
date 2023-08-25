@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-title>Rutas Asignadas</ion-title>
+    <ion-icon slot="end" name="power-outline" class="class1" (click)="volver()"></ion-icon>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ngb-accordion>
+
+    <ngb-panel id="preventchange-1">
+
+      <ng-template ngbPanelTitle>
+        <ion-label class="texto"><ion-icon name="trail-sign-outline"></ion-icon>&nbsp;Lista de Rutas Asignadas</ion-label>
+      </ng-template>
+
+      <ng-template ngbPanelContent>
+        <div slot="content">
+          <div *ngIf="existenrutas">
+            <div *ngFor="let campo of lista; let i=index" (click)="abrirruta(campo.id,i)">
+              <div class="col-12 class2">
+                <table>
+                  <tr class="colimage">
+                    <td rowspan="3" width="50">
+                      <ion-icon name="file-tray-full-outline" style="color: blue;font-size: 2rem;"></ion-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="col1">Ruta</td>
+                    <td>{{campo.nro }}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td width="100" class="col1">Estado</td>  
+                    <td class="azul"><span>{{campo.estado}}</span></td>
+                  </tr>
+                </table> 
+              </div>
+            </div>
+          </div> 
+
+          <div class="col-12" *ngIf="!existenrutas" style="text-align: center;margin-top: 15px">
+            <img src='../../assets/prohibido.png' style="width: 50px;">
+            <p style="padding-top: 15px">No tienes rutas Asignadas..</p>
+          </div>
+        </div>
+      </ng-template>
+
+    </ngb-panel>
+
+    <ngb-panel id="preventchange-2">
+
+      <ng-template ngbPanelTitle>
+        <ion-label class="texto2"><ion-icon name="checkmark-done-circle-outline"></ion-icon>&nbsp;Lista de Rutas por Validar</ion-label>
+      </ng-template>
+
+      <ng-template ngbPanelContent>
+        <div slot="content">
+          <div *ngIf="existependientes">
+            <div *ngFor="let dato of pendientes; let i=index" (click)="vistaruta(dato)">
+              <div class="col-12 class2">
+                <table>
+                  <tr class="colimage">
+                    <td rowspan="3" width="50">
+                      <ion-icon name="file-tray-full-outline" style="color: blue;font-size: 2rem;"></ion-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="col2">Ruta</td>
+                    <td>{{dato.nro }}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td width="100" class="col2">Recibido por</td>  
+                    <td class="azul"><span>{{dato.receptor}}</span></td>
+                  </tr>
+                </table> 
+              </div>
+            </div>
+          
+          </div>
+          <div class="col-12" *ngIf="!existependientes" style="text-align: center;margin-top: 15px">
+            <img src='../../assets/prohibido.png' style="width: 50px;">
+            <p style="padding-top: 15px">No existen rutas pendientes de validar..</p>
+          </div>
+        </div>
+      </ng-template>
+
+    </ngb-panel>
+
+  </ngb-accordion>
+
+
+  <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+    <ion-fab-button color="danger" (click)="reload();">
+      <ion-icon name="reload-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

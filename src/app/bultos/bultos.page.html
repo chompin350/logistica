@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Gestion Bultos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="d-flex align-items-center">
+      <ion-col sizeXs="12" sizeMd="2">Nro Guia :</ion-col>
+      <ion-col sizeXs="12" sizeMd="3">
+        <ion-input readonly class="form-control" value="{{nroguia}}"></ion-input>
+      </ion-col>
+      <ion-col sizeXs="12" sizeMd="2">Proveedor :</ion-col>
+      <ion-col sizeXs="12" sizeMd="5">
+        <ion-input readonly class="form-control" value="{{nombre}}"></ion-input>
+      </ion-col>  
+    </ion-row>
+    <ion-row>
+      <ion-col sizeXs="12" sizeMd="2">Vehiculo :</ion-col>
+      <ion-col sizeXs="12" sizeMd="10">
+        <ion-input readonly class="form-control" value="{{vehiculo}}"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <table class="primaria">
+    <thead>
+      <tr>
+        <th class="uno">Lin OC</th>
+        <th class="uno">Producto</th>
+        <th class="uno">Detalle</th>
+        <th class="uno">Calidad</th>
+        <th class="uno">Cantidad</th>
+        <th class="uno">Estado</th>
+        <th class="uno">Cant.Bultos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ nitem }}</td>
+        <td>{{ producto }}</td>
+        <td>{{ detalle }}</td>
+        <td>{{ calidad }}</td>
+        <td>{{ cantidad }}</td>
+        <td>{{ estado }}</td>
+        <td>{{ qbultos }}</td>
+      </tr>
+    </tbody>
+  </table>  
+  <ion-item><ion-title>Lista de Bultos</ion-title></ion-item>
+  <table class="secundaria">
+    <thead>
+      <tr>
+        <th class="dos">Linea</th>
+        <th class="dos">Codigo</th>
+        <th class="dos">Etiqueta</th>
+        <th class="dos">Estado</th>
+        <th class="dos">Opc</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bulto of bultos">
+        <td class="tres">{{ cerosnumero(bulto.NItem,3) }}</td>
+        <td class="tres">{{ bulto.Codigo }}</td>
+        <td class="tres">
+          <div *ngIf="bulto.Etiqueta">
+            Si
+          </div>
+          <div *ngIf="!bulto.Etiqueta">
+            No
+          </div>
+        </td>
+        <td class="tres">{{ bulto.Estado }}</td>
+        <td class="tres">
+          <div *ngIf="bulto.IdEstado===1">
+            <ion-icon md="trash" (click)="alertRemove(bulto.Id)" color="danger" style="font-size:1.5rem"></ion-icon>  
+          </div>
+          <div *ngIf="bulto.IdEstado!==1" disabled>
+            <ion-icon md="remove-circle" color="dark" style="font-size:1.5rem"></ion-icon>
+          </div>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+</ion-content>
+
+<ion-footer>
+  <div *ngIf="flagestado" class="toolbartools">  
+    <ion-segment [(ngModel)]="segment" color="primary">  
+      <ion-segment-button value="0" (click)="generaEtiqueta()">  
+        <ion-label>Generar</ion-label>  
+        <ion-label class="subtitulo">Etiqueta</ion-label>  
+        <ion-icon name="barcode-outline"></ion-icon>  
+      </ion-segment-button>  
+      <ion-segment-button value="1" routerLink="/imprimir/{{iditem}}/{{idguiaretiro}}">  
+        <ion-label>Imprimir</ion-label>  
+        <ion-label class="subtitulo">Etiqueta</ion-label>  
+        <ion-icon name="print-outline"></ion-icon>  
+      </ion-segment-button>  
+      <ion-segment-button value="2" routerLink="/cargabultos/{{iditem}}/{{idguiaretiro}}">  
+        <img [src]="myCustomIcon" alt="" class="iconocamion">
+        <ion-label class="lblcarga">Cargar</ion-label>  
+        <ion-label class="subtitulo">Bultos</ion-label>  
+      </ion-segment-button>  
+    </ion-segment>  
+  </div>   
+</ion-footer>

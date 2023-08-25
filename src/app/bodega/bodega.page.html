@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start" defaultHref="/inicio"></ion-back-button>
+    <ion-title>Descargar en Bodega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ruta N° <strong>{{nroguia}}</strong></ion-card-title>
+      <div class="div_centrado">
+        <label class="form-control">
+          Cantidad de Bultos Generados :
+        </label>
+        <label class="form-control center_azul">
+          {{ total }}
+        </label>
+      </div>
+      <div class="div_centrado">
+        <label class="form-control">
+          Bultos Ingresados :
+        </label>
+        <label class="form-control center_rojo">
+          {{bodega}}
+        </label>
+      </div>
+      
+      <ion-row>
+        <ion-col sizeXs="12" sizeMd="6" sizeLg="6">
+          <ion-button color="primary" expand="full" size="large" (click)="scanBar()">
+            <ion-icon name="barcode-outline"  slot="end"></ion-icon>
+            Scanear Codigo
+          </ion-button>
+        </ion-col>
+        <ion-col sizeXs="12" sizeMd="6" sizeLg="6">
+          <ion-button  (click)="btnvalidacarga()" expand="block" size="large" color="warning">
+            <ion-icon name="hand-right-outline" slot="end"></ion-icon>
+            Subida Manual
+          </ion-button>    
+        </ion-col>
+      </ion-row>
+      <ion-col sizeXs="12" sizeMd="10" sizeLg="10" style="display:flex;">
+        <ion-input type="text" id="scancodigo" name="scancodigo" size-xs="12" size-md="10" size-lg="10" #scancodigo class="form-control centrar"></ion-input>
+        <ion-button color="primary" (click)="limpiar();">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="uno">Bulto</th>
+            <th class="uno">Descripcion</th>
+            <th class="uno">Guia Retiro</th>
+            <th class="uno">Nro OCC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listado">
+            <td class="dos">{{item.codigo}}</td>
+            <td class="dos">{{item.descripcion}}</td>
+            <td class="dos">{{item.guiaretiro}}</td>
+            <td class="dos">{{item.nroocc}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <div class="toolbartools">  
+    <ion-segment color="primary">  
+      <ion-segment-button value="0" (click)="entregaequipos()">  
+        <ion-label>Confirmar</ion-label>  
+        <ion-label class="subtitulo">Entrega</ion-label>  
+        <ion-icon name="save-outline"></ion-icon>  
+      </ion-segment-button> 
+      <ion-segment-button value="1"  (click)="limpiarlistado()">  
+        <ion-label>Limpiar</ion-label>  
+        <ion-label class="subtitulo">Bultos</ion-label>  
+        <ion-icon name="cloud-upload-outline"></ion-icon>  
+      </ion-segment-button>  
+    </ion-segment>  
+  </div> 
+
+
+</ion-footer>

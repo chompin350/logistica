@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="titulo">{{titulo}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-text-center w-100">
+    <img src="../../assets/img/password.jpg" alt="" class="imagen">  
+  </div>
+
+  <form [formGroup]="formulario" (ngSubmit)="validacionUsuario()">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-sm="8" size-md="6" size-lg="4" size-xl="2">
+          <ion-card>
+            <ion-item>
+              <ion-label position="floating">Ingrese Usuario</ion-label>
+              <ion-input formControlName="usuario" id="usuario" name="usuario" placeholder="Ingrese Usuario"></ion-input>  
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Ingrese Contraseña</ion-label>
+              <ion-input formControlName="password" type="password" id="password" name="password" placeholder="Ingrese Contraseña"></ion-input>  
+            </ion-item>
+            <ion-button expand="block" class="botton1" type="submit">Ingresar</ion-button>
+          </ion-card> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <!--
+  <ion-card size-md="6" size-lg="6" size-xs="12" class="fondo2">
+    <ion-card-header>  
+      <ion-card-title class="colorLogin">Login</ion-card-title>  
+    </ion-card-header>  
+    <form [formGroup]="formulario" (submit)="validacionUsuario()" class="centrar">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item style="border: 1px solid grey;">
+                <input formControlName="usuario" type="text" class="form-control" style="padding: 10px 10px" id="usuario" placeholder="Ingrese Usuario" name="usuario">
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <input formControlName="password" type="password" class="form-control" style="padding: 10px 20px" placeholder="Ingrese Contraseña"  id="password" name="password">
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="centrar">
+            <ion-button color="primary" [disabled]="formulario.invalid" (click)="validacionUsuario()">Ingresar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card> -->
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="4" size-md="4" size-lg="4" size-xl="4">
+        <div class="div_mensaje">
+          <b>Recomendaciones clave: </b><br>
+            <span> 
+            - Incluir letras mayúsculas y minúsculas. <br>
+            - Incluir Números. <br>
+            - Incluir Símbolos del teclado.
+            </span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+
+</ion-content>
+
+ <ion-footer>
+  <ion-button expand="full" fill="outline" color="danger">Bienvenido</ion-button>  
+</ion-footer>

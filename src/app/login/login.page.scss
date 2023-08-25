@@ -1,0 +1,46 @@
+.fondo{
+  background-color: --ion-color-mycolor;
+}
+.colorLogin{
+  color: #04a9f5;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.fondo2{
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  //border: 1px solid darkolivegreen;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  @media only screen and (max-width: 600px) {
+      width:90%;
+  }
+  @media only screen and (min-width: 601px) {
+      width: 50%;
+  }
+}
+
+.titulo{
+//  font-family: fantasy;
+  font-size: 2rem;
+  color: var(--ion-color-mywhite);
+}
+
+.imagen{
+  width: 50px;
+  padding-top: 2rem;
+}
+
+.botton1{
+  margin: 1rem;
+}
+
+.div_mensaje{
+  text-align: left;
+  font-size: 10px;
+  font-family: monospace;
+  color: #000000;
+}

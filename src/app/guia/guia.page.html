@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Guia Retiro : {{ nroguia }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="borde">
+    <ion-row>
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="1">N° Guia: </ion-col> 
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="2" class="form-control" disabled>{{ nroguia }}</ion-col> 
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="2">Proveedor :</ion-col> 
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="3" class="form-control" disabled>{{ proveedor }}</ion-col> 
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="1">Estado : </ion-col> 
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="3" class="form-control" disabled> {{ estado }}</ion-col> 
+    </ion-row>
+  </ion-grid>
+  <div class="borde">
+    <div *ngFor="let elemento of grupo">
+      <div class="bordetitulo">
+        <ion-col sizeXs="12" sizeMs="12" sizeMd="2" sizeLg="2" >Vehiculo:</ion-col>
+        <ion-col sizeXs="12" sizeMs="12" sizeMd="10" sizeLg="10">
+          {{ elemento.Marca }} - {{ elemento.Modelo }} - {{ elemento.Fabricacion }}
+        </ion-col>
+      </div>
+        <table>
+          <thead>
+          <tr>
+            <th>Lin OC</th>
+            <th>Producto</th>
+            <th>Detalle</th>
+            <th>Calidad</th>
+            <th>Cant.</th>
+            <th>O.Compra</th>
+            <th>Ver Kit</th>
+            <th>Estado</th>
+            <th>Gest.Bultos</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let campo of detalles" sizeXs="12" sizeMs="12" sizeMd="12" sizeLg="12">
+              <td *ngIf="elemento.Marca===campo.Marca"> {{ service.cerosnumero(campo.NItem,3) }}</td>
+              <td *ngIf="elemento.Marca===campo.Marca"> {{ campo.DescripcionItem}}</td>
+              <td *ngIf="elemento.Marca===campo.Marca"> {{ campo.Caracteristicas}} </td>
+              <td *ngIf="elemento.Marca===campo.Marca"> {{ campo.Calidad }}</td>
+              <td *ngIf="elemento.Marca===campo.Marca"> {{ campo.Cantidad }} </td>
+              <td *ngIf="elemento.Marca===campo.Marca">
+                <ion-button 
+                  (click)="getDatoItem(campo.Id)">
+                  {{ campo.NroOcp }}
+                </ion-button>
+              </td>
+              <td *ngIf="elemento.IdOrdenCompraProveedor===campo.IdOrdenCompraProveedor">
+                <ion-button 
+                  color="warning" 
+                  *ngIf="campo.Qitem" 
+                  routerLink="/detallekit/{{campo.IdItemProveedor}}/{{campo.IdOrdenRetiro}}">
+                  Ver
+                </ion-button>
+                <span *ngIf="!campo.Qitem">--</span>
+              </td>
+              <td *ngIf="elemento.IdOrdenCompraProveedor===campo.IdOrdenCompraProveedor"> {{ campo.EstadoBodegaje}} </td>
+              <td *ngIf="elemento.IdOrdenCompraProveedor===campo.IdOrdenCompraProveedor">
+                <ion-button 
+                  color="success" 
+                  routerLink="/bultos/{{campo.IdItemProveedor}}/{{campo.IdOrdenRetiro}}">
+                  Gestion
+                </ion-button>  
+              </td>
+            </tr>        
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</ion-content>
+
+<div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ubicacion Proveedor</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <ModalComponent></ModalComponent>
+      <form>
+        <div class="mb-3">
+          <label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+ 
+  </ng-template>

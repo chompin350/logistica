@@ -1,0 +1,57 @@
+
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start" defaultHref="/inicio"></ion-back-button>
+    <ion-title>Valida cierre Ruta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="bultosflag">
+    <small>Debe ingresar su password para validar la entrega definitiva.</small>
+    <ion-col sizeXs="12" sizeMd="12" sizeLg="12" style="display:flex;">
+      <ion-input size-xs="12" size-md="10" size-lg="10" class="form-control" type="password" placeholder="Ingrese Password" id="txt_password" name="txt_password" [(ngModel)]="pass"></ion-input>
+      <ion-button color="primary" expand="block" (click)="validarecepcion();" style="padding: 0;">
+        Validar
+      </ion-button>
+    </ion-col>
+  </div>
+  <div style="border:1px solid grey;font-size: 11px;font-family: monospace;">
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeXs="6" sizeMd="3" sizeLg="3">Ruta N° : </ion-col>
+        <ion-col sizeXs="6" sizeMd="3" sizeLg="3"><b>{{ service.cerosnumero(idruta,8) }}</b></ion-col>
+        <ion-col sizeXs="6" sizeMd="3" sizeLg="3">Fecha Creacion :</ion-col>
+        <ion-col sizeXs="6" sizeMd="3" sizeLg="3">{{ fechacreacion }}</ion-col>
+        <ion-col sizeXs="6" sizeMd="3" sizeLg="3">Bodeguero  :</ion-col>
+        <ion-col sizeXs="6" sizeMd="3" sizeLg="3">{{ receptor }}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <table>
+      <thead>
+        <tr>
+          <th>OCP N°</th>
+          <th>Guia Despacho</th>
+          <th>Bulto</th>
+          <th>Descripcion</th>
+          <th>Fecha Creacion</th>
+          <th>Fecha Recepcion Bodega</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dato of bultos">
+          <td>{{ dato.NroOcp }}</td>
+          <td>{{ dato.NroGuiaretiro }}</td>
+          <td>{{ dato.Codigo }}</td>
+          <td>{{ dato.Descripcion }}</td>
+          <td>{{ extras.formatofecha(dato.FechaCreacion) }}</td>
+          <td>{{ extras.formatofecha(dato.FechaRc) }}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</ion-content>

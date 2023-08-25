@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start" defaultHref="/bultos/{{iditem}}/{{idguiaretiro}}"></ion-back-button>
+    <ion-title>Impresion de etiquetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="borde">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{observacion}}</ion-card-subtitle>
+        <ion-card-title>{{descripcion}}</ion-card-title>
+      </ion-card-header>  
+      <ion-card-content>
+
+      </ion-card-content> 
+    </ion-card>
+    <form #formulario (submit)="validaImpresion()">
+      <table datatable class="table">
+        <thead>
+          <tr>
+            <th width="50px">Selección</th>
+            <th>Codigo</th>
+            <th>Fecha</th>
+            <th>Q Imp.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bulto of bultos; let i=index">
+            <td class="center">
+              <input type="checkbox" class="letra"  [checked]="bulto.Seleccionado" (click)="onSelectionChange($event,i)">
+            </td>
+            <td>{{ bulto.Codigo }}</td>
+            <td>{{ extras.formatofecha(bulto.FechaCreacion) }}</td>
+            <td>{{ bulto.Qprint }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+  <div id="printer"></div>
+
+  <div id="section"></div>
+      
+    <ion-card style="text-align: center">
+      <ion-card-content 
+      #contenido
+        id="contenido" 
+        class="d-flex justify-content-center flex-wrap" >
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list *ngIf="!findimpresora">
+      <ion-item *ngFor="let item of bluetoothList" (click)="selectPrinter(item.id)">
+        {{item.name}} {{item.id}}
+      </ion-item>
+    </ion-list>
+</ion-content>
+<!-- style="width:150mm"> -->
+<ion-footer>
+  <div class="ion-padding" style="background-color: beige;color:black">Impresora Seleccionada : {{selectedPrinter}}</div>
+  <ion-button expand="full" color="danger" (click)="listPrinter()" *ngIf="!findimpresora">Buscar Impresora</ion-button>
+  <ion-button expand="full" size="large" color="primary" (click)="validaImpresion()" *ngIf="findimpresora">
+    <ion-icon slot="start" name="print" color="success"></ion-icon>  
+    Generar Etiquetas
+  </ion-button>
+</ion-footer>

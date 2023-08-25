@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="fondo">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Detalle Kit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding:5px">
+
+    <ion-card>
+      <ion-card-header>
+        <ion-list>
+          <ion-item>
+            <h2>Producto : {{ descripcionitem }}</h2>    
+          </ion-item>
+          <ion-item>
+            Caracteristicas : {{ caracteristica }}
+          </ion-item>
+          <ion-item>
+            Codigo : {{ codigo }}
+          </ion-item>
+          <ion-item>
+            Cantidad : {{ cantidad }}
+          </ion-item>
+        </ion-list>
+      </ion-card-header>
+      <ion-card-content>
+        <table>
+          <thead>
+            <tr>
+              <th>Descripcion</th>
+              <th>Codigo</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let kit of kits">
+                <td>{{ kit.Descripcion }}</td>
+                <td>{{ kit.Codigo }}</td>
+                <td>{{ kit.Cantidad }}</td>
+            </tr>
+          </tbody>      
+        </table>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+</ion-content>
